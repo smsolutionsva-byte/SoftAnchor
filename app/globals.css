@@ -1,0 +1,144 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Playfair Display", serif;
+  --font-body: "DM Sans", sans-serif;
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 32px;
+  --radius-xl: 48px;
+  --radius-full: 9999px;
+  --transition-soft: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition-gentle: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ─── Theme: Soft Static ─── */
+[data-theme="soft-static"] {
+  --bg-primary: #1a1625;
+  --bg-secondary: #2d1f3d;
+  --bg-tertiary: #1e1530;
+  --orb-1: #6b4c8a;
+  --orb-2: #3d2a5c;
+  --accent: #c4b5fd;
+  --accent-primary: #c4b5fd;
+  --accent-soft: rgba(196, 181, 253, 0.15);
+  --text-primary: #f0ebff;
+  --text-secondary: #b39dce;
+  --text-muted: #8a7aa5;
+  --glass-bg: rgba(196, 181, 253, 0.08);
+  --glass-border: rgba(196, 181, 253, 0.15);
+  --shadow: rgba(107, 76, 138, 0.4);
+}
+
+/* ─── Theme: Gentle Drift ─── */
+[data-theme="gentle-drift"] {
+  --bg-primary: #1f1820;
+  --bg-secondary: #2e1f2a;
+  --bg-tertiary: #251a24;
+  --orb-1: #8a4c6b;
+  --orb-2: #5c2a3d;
+  --accent: #f9a8d4;
+  --accent-primary: #f9a8d4;
+  --accent-soft: rgba(249, 168, 212, 0.15);
+  --text-primary: #fff0f6;
+  --text-secondary: #ce9db3;
+  --text-muted: #a07a8e;
+  --glass-bg: rgba(249, 168, 212, 0.08);
+  --glass-border: rgba(249, 168, 212, 0.18);
+  --shadow: rgba(138, 76, 107, 0.4);
+}
+
+/* ─── Theme: Golden Hour ─── */
+[data-theme="golden-hour"] {
+  --bg-primary: #141f1a;
+  --bg-secondary: #1a2e22;
+  --bg-tertiary: #17261d;
+  --orb-1: #4c8a6b;
+  --orb-2: #2a5c3d;
+  --accent: #86efac;
+  --accent-primary: #86efac;
+  --accent-soft: rgba(134, 239, 172, 0.15);
+  --text-primary: #f0fff5;
+  --text-secondary: #9dceaf;
+  --text-muted: #7aab8e;
+  --glass-bg: rgba(134, 239, 172, 0.08);
+  --glass-border: rgba(134, 239, 172, 0.15);
+  --shadow: rgba(76, 138, 107, 0.4);
+}
+
+/* ─── Base ─── */
+:root {
+  color-scheme: dark;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  transition: background-color 0.8s ease, color 0.8s ease;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+/* ─── Heartbeat Cursor ─── */
+.heartbeat-cursor-active,
+.heartbeat-cursor-active * {
+  cursor: none !important;
+}
+
+/* ─── Evening Dim ─── */
+.evening-dim {
+  filter: brightness(0.85);
+  transition: filter 2s ease;
+}
+
+/* ── Chat scrollbar ───────────────────────────────────────────── */
+.chat-scroll::-webkit-scrollbar {
+  width: 5px;
+}
+.chat-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.chat-scroll::-webkit-scrollbar-thumb {
+  background: var(--glass-border);
+  border-radius: 3px;
+  transition: background 0.2s;
+}
+.chat-scroll::-webkit-scrollbar-thumb:hover {
+  background: #6366f1;
+}
+
+/* ── Chat textarea focus ring ─────────────────────────────────── */
+.chat-textarea:focus {
+  border-color: #6366f1 !important;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15) !important;
+  outline: none;
+}
+
+/* ── Message bubble text selection ───────────────────────────── */
+.message-bubble::selection {
+  background: rgba(99, 102, 241, 0.3);
+}
+
+/* ── Typing dots animation ────────────────────────────────────── */
+@keyframes typingBounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-6px); }
+}
+
+/* ── Pulse animation for active dot ───────────────────────────── */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.5; }
+}
